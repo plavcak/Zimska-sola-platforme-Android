@@ -1,1 +1,1 @@
-# Zimska-sola-platforme-Android
+# Zimska šola platforme Android
