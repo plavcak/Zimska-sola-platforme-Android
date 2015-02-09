@@ -1,0 +1,1 @@
+# Zimska-sola-platforme-Android
