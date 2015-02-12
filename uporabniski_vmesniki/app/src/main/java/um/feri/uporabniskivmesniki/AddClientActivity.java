@@ -11,6 +11,7 @@ import android.widget.Toast;
 import um.feri.uporabniskivmesniki.db.ClientDAO;
 import um.feri.uporabniskivmesniki.db.Database;
 import um.feri.uporabniskivmesniki.model.Client;
+import um.feri.uporabniskivmesniki.rest.RestClient;
 
 public class AddClientActivity extends ActionBarActivity implements View.OnClickListener {
 
@@ -54,9 +55,28 @@ public class AddClientActivity extends ActionBarActivity implements View.OnClick
         new ClientDAO().insert(client, db);
         db.close();
 
-        Toast.makeText(getApplicationContext(), "Klient uspešno dodan!", Toast.LENGTH_SHORT).show();
+        sendClient(client);
+
+        etFirstName.setText(null);
+        etlastName.setText(null);
 
         finish();
+    }
+
+    private void sendClient(Client client) {
+
+        RestClient restClient = new RestClient();
+        restClient.sendAsync(client, new RestClient.OnRestResponseListener() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onFailure() {
+
+            }
+        });
     }
 
     @Override

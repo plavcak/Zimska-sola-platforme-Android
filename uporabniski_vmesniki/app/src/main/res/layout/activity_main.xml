@@ -16,43 +16,79 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/content_frame"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <Button
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/content_frame"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="View Pager"
-                android:id="@+id/button"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="74dp"
-                android:layout_gravity="center_horizontal" />
+                android:orientation="vertical"
+                android:paddingBottom="30dp">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Seznam"
-                android:id="@+id/button2"
-                android:layout_marginTop="32dp"
-                android:layout_below="@+id/button"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal" />
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="View Pager"
+                    android:id="@+id/button"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center_horizontal" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dodajanje klienta"
-                android:id="@+id/button3"
-                android:layout_marginTop="32dp"
-                android:layout_below="@+id/button"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center_horizontal" />
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Seznam"
+                    android:id="@+id/button2"
+                    android:layout_marginTop="16dp"
+                    android:layout_below="@+id/button"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal" />
 
-        </LinearLayout>
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Dodajanje klienta"
+                    android:id="@+id/button3"
+                    android:layout_marginTop="16dp"
+                    android:layout_below="@+id/button"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal" />
+
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Uporaba kamere"
+                    android:id="@+id/button6"
+                    android:layout_marginTop="16dp"
+                    android:layout_below="@+id/button"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal" />
+
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Google Maps"
+                    android:id="@+id/button8"
+                    android:layout_marginTop="16dp"
+                    android:layout_below="@+id/button"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal" />
+
+                <Button
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Facebook"
+                    android:id="@+id/button9"
+                    android:layout_marginTop="16dp"
+                    android:layout_below="@+id/button"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal" />
+
+            </LinearLayout>
+        </ScrollView>
 
         <ListView android:id="@+id/left_drawer"
             android:layout_width="240dp"

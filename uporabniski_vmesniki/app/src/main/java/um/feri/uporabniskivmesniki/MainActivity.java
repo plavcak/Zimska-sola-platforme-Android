@@ -1,11 +1,8 @@
 package um.feri.uporabniskivmesniki;
 
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -23,6 +20,8 @@ import java.io.OutputStreamWriter;
 
 import um.feri.uporabniskivmesniki.db.ClientDAO;
 import um.feri.uporabniskivmesniki.db.Database;
+import um.feri.uporabniskivmesniki.gcm.GcmComponent;
+import um.feri.uporabniskivmesniki.rest.RestClient;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
@@ -31,6 +30,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private Button button;
     private Button button2;
     private Button button3;
+    private Button button6;
+    private Button button8;
+    private Button button9;
     private Toolbar toolbar;
 
     @Override
@@ -41,30 +43,40 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         button = (Button)findViewById(R.id.button);
         button2 = (Button)findViewById(R.id.button2);
         button3 = (Button)findViewById(R.id.button3);
+        button6 = (Button)findViewById(R.id.button6);
+        button8 = (Button)findViewById(R.id.button8);
+        button9 = (Button)findViewById(R.id.button9);
 
         button.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
+        button6.setOnClickListener(this);
+        button8.setOnClickListener(this);
+        button9.setOnClickListener(this);
 
         toolbar = (Toolbar)findViewById(R.id.toolbar);
-
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        RestClient client = new RestClient();
 
+        client.receiveAsync(new RestClient.OnRestResponseListener() {
+            @Override
+            public void onSuccess() {
+                Log.d(TAG, "onSuccess()");
+            }
 
-        Database database = new Database(getApplicationContext());
+            @Override
+            public void onFailure() {
+                Log.d(TAG, "onFailure()");
+            }
+        });
 
-        ClientDAO clientDAO = new ClientDAO();
+        registerGcm();
+    }
 
-        SQLiteDatabase db = database.getWritableDatabase();
-
-        Toast.makeText(getApplicationContext(), "Count: " + clientDAO.count(db), Toast.LENGTH_SHORT).show();
-
-        db.close();
-        database.close();
-
-        writeFile();
+    private void registerGcm() {
+        GcmComponent gcmComponent = new GcmComponent(getApplicationContext());
+        gcmComponent.onCreate(this);
     }
 
     @Override
@@ -104,12 +116,23 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         else if(v.getId() == R.id.button3) {
             startActivity( new Intent(getApplicationContext(), AddClientActivity.class));
         }
+
+        else if(v.getId() == R.id.button6) {
+            startActivity( new Intent(getApplicationContext(), CameraActivity.class));
+        }
+
+        else if(v.getId() == R.id.button8) {
+            startActivity( new Intent(getApplicationContext(), GoogleMapsActivity.class));
+        }
+
+        else if(v.getId() == R.id.button9) {
+            startActivity( new Intent(getApplicationContext(), FacebookActivity.class));
+        }
     }
 
     private int count;
 
     private void writeFile() {
-
 
         // external storage
         if(Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
@@ -133,7 +156,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     private void readPreferences() {
