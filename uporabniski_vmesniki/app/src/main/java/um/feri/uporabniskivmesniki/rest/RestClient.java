@@ -70,10 +70,13 @@ public class RestClient {
     }
 
     public boolean send(Client client) {
-        ObjectMapper mapper = new ObjectMapper();
 
         try {
             HttpURLConnection connection = new RestFactory().getPostRequest();
+
+            client = new Client();
+
+            ObjectMapper mapper = new ObjectMapper();
             mapper.writeValue(connection.getOutputStream(), client);
 
             if(connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
