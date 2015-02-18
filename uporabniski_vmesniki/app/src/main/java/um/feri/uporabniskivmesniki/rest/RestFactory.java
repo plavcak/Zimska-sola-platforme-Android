@@ -7,7 +7,7 @@ import java.net.URL;
 
 public class RestFactory {
 
-    private static final String BASE_URL = "http://192.168.1.4:8080/zimska-sola-android-rest/resources/";
+    private static final String BASE_URL = "http://164.8.161.37:8080/zimska-sola-android-rest/resources/";
 
     public HttpURLConnection getListRequest() throws IOException {
         HttpURLConnection connection = getGetConnection("client");
@@ -18,6 +18,15 @@ public class RestFactory {
 
     public HttpURLConnection getPostRequest() throws IOException {
         HttpURLConnection connection = getPostConnection("client");
+        connection.setRequestProperty("Content-Type", "application/json");
+        return connection;
+    }
+
+    public HttpURLConnection getClientSendRequest() throws IOException {
+        java.net.URL url = getUrl("http://164.8.161.37:8080/zimska-sola-android-rest/resources/client");
+        java.net.HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setDoOutput(true);
+        connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "application/json");
         return connection;
     }

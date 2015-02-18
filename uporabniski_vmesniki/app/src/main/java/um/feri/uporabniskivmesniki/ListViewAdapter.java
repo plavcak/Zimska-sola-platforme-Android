@@ -22,19 +22,14 @@ public class ListViewAdapter extends ListAdapter<Client> {
 
         if(view == null) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
             view = inflater.inflate(R.layout.view_list_item, parent, false);
-
             ViewHolder viewHolder = new ViewHolder();
             viewHolder.tvName = (TextView)view.findViewById(R.id.tvFirstName);
-
             view.setTag(viewHolder);
         }
 
         ViewHolder viewHolder = (ViewHolder)view.getTag();
-
         Client client = getTypedItem(position);
-
         viewHolder.tvName.setText(client.getFirstName() + " " + client.getLastName());
 
         return view;

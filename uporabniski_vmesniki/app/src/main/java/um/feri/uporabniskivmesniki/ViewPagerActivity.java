@@ -3,6 +3,7 @@ package um.feri.uporabniskivmesniki;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -25,7 +26,7 @@ public class ViewPagerActivity extends ActionBarActivity {
         adapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
-        viewPager.setOffscreenPageLimit(4);
+        viewPager.setOffscreenPageLimit(1);
     }
 
     public static class PlaceholderFragment extends Fragment {
@@ -57,6 +58,7 @@ public class ViewPagerActivity extends ActionBarActivity {
             return rootView;
         }
     }
+
 
     public static class ViewPagerAdapter extends FragmentPagerAdapter {
 

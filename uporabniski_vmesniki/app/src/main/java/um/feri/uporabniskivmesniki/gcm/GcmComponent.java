@@ -29,6 +29,7 @@ public class GcmComponent {
 	 * Substitute you own sender ID here. This is the project number you got
 	 * from the API Console, as described in "Getting Started."
 	 */
+    // TODO
 	private static final String SENDER_ID = "";
 	
     private GoogleCloudMessaging gcm;

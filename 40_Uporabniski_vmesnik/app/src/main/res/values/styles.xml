@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+
+
+
+    </style>
+
+    <style name="TextTitle" parent="Base.TextAppearance.AppCompat.Large">
+        <item name="android:color">@android:color/darker_gray</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">@android:color/holo_orange_light</item>
+    </style>
+
+</resources>

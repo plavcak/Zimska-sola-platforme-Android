@@ -91,11 +91,10 @@ public class ClientDAO {
     public List<Client> getAll(String orderBy, SQLiteDatabase db) throws SQLException {
         Cursor cursor = db.query(getTableName(), null, null, null, null, null, orderBy);
         List<Client> list = new ArrayList<Client>();
-        
+
         while(cursor.moveToNext()) {
         	list.add(getObject(cursor));
         }
-
         cursor.close();
 
         return list;

@@ -64,7 +64,6 @@ public class ClientLoader extends AsyncTaskLoader<List<Client>> {
     }
 
     @Override protected void onStopLoading() {
-        // Attempt to cancel the current load task if possible.
         cancelLoad();
     }
 

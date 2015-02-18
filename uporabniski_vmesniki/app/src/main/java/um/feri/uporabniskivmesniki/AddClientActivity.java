@@ -3,6 +3,7 @@ package um.feri.uporabniskivmesniki;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,8 @@ import um.feri.uporabniskivmesniki.model.Client;
 import um.feri.uporabniskivmesniki.rest.RestClient;
 
 public class AddClientActivity extends ActionBarActivity implements View.OnClickListener {
+
+    private static final String TAG = "AddClientActivity";
 
     private Button button;
     private EditText etFirstName;
@@ -69,12 +72,12 @@ public class AddClientActivity extends ActionBarActivity implements View.OnClick
         restClient.sendAsync(client, new RestClient.OnRestResponseListener() {
             @Override
             public void onSuccess() {
-
+                Log.d(TAG, "onSuccess()");
             }
 
             @Override
             public void onFailure() {
-
+                Log.d(TAG, "onFailure()");
             }
         });
     }

@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="um.feri.uporabniskivmesniki.StorageActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Shared preferences"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/etPreferences"
+        android:layout_width="match_parent"
+        android:gravity="left|top"
+        android:layout_height="200dp" />
+
+    <Button
+        android:id="@+id/btnSavePref"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Save"/>
+</LinearLayout>

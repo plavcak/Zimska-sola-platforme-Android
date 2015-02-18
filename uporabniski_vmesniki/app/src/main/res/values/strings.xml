@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="facebook_app_id">API_KEY</string>
-
+    <string name="facebook_app_id"></string>
     <string name="app_name">Zimska šola</string>
     <string name="action_settings">Nastavitve</string>
     <string name="title_activity_simple_list">Seznam klientov</string>
@@ -11,5 +10,9 @@
     <string name="title_activity_camera">Uporaba kamere</string>
     <string name="title_activity_google_maps">Uporaba zemljevida</string>
     <string name="title_activity_facebook">Facebook objava</string>
+    <string name="title_activity_card_view">CardViewActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_file_storage">FileStorageActivity</string>
+    <string name="title_activity_storage">StorageActivity</string>
 
 </resources>

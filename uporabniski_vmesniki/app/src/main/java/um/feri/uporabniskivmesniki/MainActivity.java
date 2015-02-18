@@ -1,8 +1,10 @@
 package um.feri.uporabniskivmesniki;
 
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Environment;
+import android.location.Location;
+import android.location.LocationManager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,14 +15,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-
-import um.feri.uporabniskivmesniki.db.ClientDAO;
-import um.feri.uporabniskivmesniki.db.Database;
 import um.feri.uporabniskivmesniki.gcm.GcmComponent;
+import um.feri.uporabniskivmesniki.lolipop.CardViewActivity;
 import um.feri.uporabniskivmesniki.rest.RestClient;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
@@ -33,6 +29,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private Button button6;
     private Button button8;
     private Button button9;
+    private Button button10;
+    private Button button11;
     private Toolbar toolbar;
 
     @Override
@@ -46,6 +44,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         button6 = (Button)findViewById(R.id.button6);
         button8 = (Button)findViewById(R.id.button8);
         button9 = (Button)findViewById(R.id.button9);
+        button10 = (Button)findViewById(R.id.button10);
+        button11 = (Button)findViewById(R.id.button11);
 
         button.setOnClickListener(this);
         button2.setOnClickListener(this);
@@ -53,6 +53,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         button6.setOnClickListener(this);
         button8.setOnClickListener(this);
         button9.setOnClickListener(this);
+        button10.setOnClickListener(this);
+        button11.setOnClickListener(this);
 
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,7 +69,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
             @Override
             public void onFailure() {
-                Log.d(TAG, "onFailure()");
+                Log.d(TAG, "onFailure() receiveAsync");
             }
         });
 
@@ -128,50 +130,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         else if(v.getId() == R.id.button9) {
             startActivity( new Intent(getApplicationContext(), FacebookActivity.class));
         }
-    }
 
-    private int count;
-
-    private void writeFile() {
-
-        // external storage
-        if(Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED) {
-            // write external
+        else if(v.getId() == R.id.button10) {
+            startActivity( new Intent(getApplicationContext(), CardViewActivity.class));
         }
 
-        Toast.makeText(getApplicationContext(), "" + getFilesDir(), Toast.LENGTH_SHORT).show();
-
-        FileOutputStream outputStream = null;
-
-        try {
-            outputStream = new FileOutputStream(new File(getFilesDir(), "test.txt"));
-
-            OutputStreamWriter streamWriter = new OutputStreamWriter(outputStream);
-
-            streamWriter.write("test");
-
-            streamWriter.close();
-            outputStream.close();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        else if(v.getId() == R.id.button11) {
+            startActivity( new Intent(getApplicationContext(), StorageActivity.class));
         }
-    }
-
-    private void readPreferences() {
-        SharedPreferences preferences = getSharedPreferences("user_settings", MODE_PRIVATE);
-
-        count = preferences.getInt("count", 0);
-        Log.d(TAG, "readPreferences() count=" + count);
-    }
-
-    private void writePreferences() {
-        SharedPreferences preferences = getSharedPreferences("user_settings", MODE_PRIVATE);
-
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("count", count++);
-        editor.commit();
-
-        Log.d(TAG, "writePreferences() count=" + count);
     }
 }

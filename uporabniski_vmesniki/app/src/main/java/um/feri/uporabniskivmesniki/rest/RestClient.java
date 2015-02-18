@@ -74,8 +74,6 @@ public class RestClient {
         try {
             HttpURLConnection connection = new RestFactory().getPostRequest();
 
-            client = new Client();
-
             ObjectMapper mapper = new ObjectMapper();
             mapper.writeValue(connection.getOutputStream(), client);
 
@@ -133,6 +131,9 @@ public class RestClient {
 
             if(connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 Log.i(TAG, "Registration succesfull.");
+            } else {
+                Log.d(TAG, "gcmRegister() " + connection.getResponseMessage());
+
             }
 
             connection.disconnect();

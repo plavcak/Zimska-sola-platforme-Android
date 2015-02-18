@@ -1,6 +1,7 @@
 package um.feri.uporabniskivmesniki;
 
 import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -40,6 +41,7 @@ public class SimpleListActivity extends ActionBarActivity implements LoaderManag
     protected void onResume() {
         super.onResume();
         listView.setAdapter(adapter);
+
 
         getSupportLoaderManager().initLoader(2, null, this);
     }
